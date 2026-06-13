@@ -1,0 +1,982 @@
+
+<style>
+:root {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --bg: #f4f8fb;
+  --surface: #ffffff;
+  --surface-soft: #f5f9fd;
+  --surface-strong: #edf4fb;
+  --text-primary: #102a43;
+  --text-secondary: #627d98;
+  --text-muted: #829ab1;
+  --border: #d9e2ec;
+  --border-soft: #e2e8f0;
+  --primary: #1d9e75;
+  --primary-dark: #0f6e56;
+  --shadow: 0 22px 55px rgba(16, 42, 67, 0.08);
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-sm: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background: linear-gradient(180deg, #f7fbff 0%, #edf4fb 100%);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 20px 36px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 18px 45px rgba(29, 158, 117, 0.22);
+}
+
+.logo i {
+  color: #fff;
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+h1 span {
+  margin-top: 4px;
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1.75rem;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(16, 42, 67, 0.08);
+  border-radius: 999px;
+  box-shadow: 0 18px 45px rgba(16, 42, 67, 0.05);
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.tab.active {
+  background: rgba(29, 158, 117, 0.14);
+  color: var(--primary-dark);
+  box-shadow: inset 0 0 0 1px rgba(29, 158, 117, 0.18);
+}
+
+.tab:hover {
+  color: var(--primary-dark);
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 1.5rem;
+}
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.stat-val {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.stat-lbl {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.pipeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.stage {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  position: relative;
+}
+
+.stage-box {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 22px;
+  padding: 18px 12px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.stage-box i {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.stage-box .cnt {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stage.active .stage-box {
+  border-color: rgba(29, 158, 117, 0.2);
+  background: rgba(29, 158, 117, 0.10);
+}
+
+.stage.active .stage-box i,
+.stage.active .stage-box .cnt {
+  color: var(--primary-dark);
+}
+
+.stage-arrow {
+  color: var(--border);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.table-wrap {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;
+  background: var(--surface);
+}
+
+th {
+  background: #f8fbff;
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: #f5f9ff;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.b-dp { background: #fff6e9; color: #8c5f1b; }
+.b-design { background: #e7f1ff; color: #165c9d; }
+.b-print { background: #eef3ff; color: #2b3d72; }
+.b-jahit { background: #fff1f2; color: #7d2c2b; }
+.b-packing { background: #fff2f8; color: #7c2f4c; }
+.b-selesai { background: #f0f7eb; color: #2e553b; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 1rem;
+}
+
+.form-grid.full {
+  grid-template-columns: 1fr;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font-size: 0.95rem;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: rgba(29, 158, 117, 0.4);
+  box-shadow: 0 0 0 4px rgba(29, 158, 117, 0.08);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(16, 42, 67, 0.08);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-color: transparent;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #12815a, #0e5c42);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tl-item {
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.tl-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 34px;
+}
+
+.tl-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.tl-dot.done {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.tl-dot.done i {
+  color: #fff;
+}
+
+.tl-dot i {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.tl-line {
+  flex: 1;
+  width: 2px;
+  background: var(--border);
+  margin: 2px 0;
+}
+
+.tl-content {
+  padding: 2px 0 18px;
+}
+
+.tl-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tl-sub {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.setup-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.setup-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e6f5ed;
+  color: var(--primary-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.code-block {
+  background: #f4f8fb;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.copy-btn {
+  float: right;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  margin-top: -8px;
+  cursor: pointer;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-secondary);
+}
+
+.copy-btn:hover {
+  background: #eef6fb;
+}
+
+.info-box {
+  background: #e8f5ee;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  font-size: 0.92rem;
+  color: #0f5840;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .wrap { padding: 22px 16px 30px; }
+  .stats { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .form-grid { grid-template-columns: 1fr; }
+  .pipeline { flex-direction: column; gap: 14px; }
+  .stage { min-width: auto; }
+}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">Sistem tracking orderan jersey dengan integrasi Google Sheets dan notifikasi WhatsApp</h2>
+
+<div class="header">
+  <div class="logo"><i class="ti ti-shirt" aria-hidden="true"></i></div>
+  <div>
+    <h1>Jersey Tracker <span>Manajemen Order Produksi</span></h1>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('dashboard')"><i class="ti ti-layout-dashboard" style="font-size:13px;margin-right:4px"></i>Dashboard</button>
+  <button class="tab" onclick="showTab('orders')"><i class="ti ti-list" style="font-size:13px;margin-right:4px"></i>Order</button>
+  <button class="tab" onclick="showTab('tambah')"><i class="ti ti-plus" style="font-size:13px;margin-right:4px"></i>Tambah Order</button>
+  <button class="tab" onclick="showTab('setup')"><i class="ti ti-settings" style="font-size:13px;margin-right:4px"></i>Setup Integrasi</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="tab-dashboard" class="panel active">
+  <div class="stats">
+    <div class="stat"><div class="stat-val" id="s-total">12</div><div class="stat-lbl">Total Order</div></div>
+    <div class="stat"><div class="stat-val" style="color:#0F6E56" id="s-selesai">4</div><div class="stat-lbl">Selesai</div></div>
+    <div class="stat"><div class="stat-val" style="color:#633806" id="s-proses">7</div><div class="stat-lbl">Dalam Proses</div></div>
+    <div class="stat"><div class="stat-val" style="color:#A32D2D" id="s-overdue">1</div><div class="stat-lbl">Terlambat</div></div>
+  </div>
+
+  <p style="font-size:12px;color:var(--color-text-secondary);margin-bottom:8px;font-weight:500">ALUR PRODUKSI</p>
+  <div class="pipeline">
+    <div class="stage">
+      <div class="stage-box"><i class="ti ti-currency-dollar" aria-hidden="true"></i><span class="cnt" id="p0">3</span>DP</div>
+    </div>
+    <div class="stage-arrow"><i class="ti ti-chevron-right"></i></div>
+    <div class="stage">
+      <div class="stage-box"><i class="ti ti-pencil" aria-hidden="true"></i><span class="cnt" id="p1">2</span>Design</div>
+    </div>
+    <div class="stage-arrow"><i class="ti ti-chevron-right"></i></div>
+    <div class="stage">
+      <div class="stage-box"><i class="ti ti-printer" aria-hidden="true"></i><span class="cnt" id="p2">1</span>Cetak</div>
+    </div>
+    <div class="stage-arrow"><i class="ti ti-chevron-right"></i></div>
+    <div class="stage">
+      <div class="stage-box"><i class="ti ti-needle-thread" aria-hidden="true"></i><span class="cnt" id="p3">1</span>Jahit</div>
+    </div>
+    <div class="stage-arrow"><i class="ti ti-chevron-right"></i></div>
+    <div class="stage">
+      <div class="stage-box"><i class="ti ti-package" aria-hidden="true"></i><span class="cnt" id="p4">0</span>Packing</div>
+    </div>
+    <div class="stage-arrow"><i class="ti ti-chevron-right"></i></div>
+    <div class="stage active">
+      <div class="stage-box"><i class="ti ti-check" aria-hidden="true"></i><span class="cnt" id="p5">4</span>Selesai</div>
+    </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--color-text-secondary);margin-bottom:8px;font-weight:500">ORDER TERBARU</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th style="width:80px">ID</th>
+        <th>Nama / Tim</th>
+        <th style="width:60px">Qty</th>
+        <th style="width:110px">Status</th>
+        <th style="width:90px">Deadline</th>
+      </tr></thead>
+      <tbody id="recent-orders"></tbody>
+    </table>
+  </div>
+  <button class="btn" style="font-size:12px" onclick="showTab('orders')">Lihat semua order <i class="ti ti-arrow-right" style="font-size:12px"></i></button>
+</div>
+
+<!-- ORDERS -->
+<div id="tab-orders" class="panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <div style="display:flex;gap:8px">
+      <select id="filter-status" onchange="renderOrders()" style="font-size:12px;padding:6px 10px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary)">
+        <option value="">Semua Status</option>
+        <option>DP</option><option>Design</option><option>Cetak</option>
+        <option>Jahit</option><option>Packing</option><option>Selesai</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="showTab('tambah')"><i class="ti ti-plus" style="font-size:13px;margin-right:4px"></i>Tambah</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th style="width:75px">ID</th>
+        <th>Nama / Tim</th>
+        <th style="width:55px">Qty</th>
+        <th style="width:110px">Status</th>
+        <th style="width:85px">Deadline</th>
+        <th style="width:120px">Aksi</th>
+      </tr></thead>
+      <tbody id="all-orders"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAMBAH ORDER -->
+<div id="tab-tambah" class="panel">
+  <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem">
+    <p style="font-size:14px;font-weight:500;margin-bottom:16px;color:var(--color-text-primary)">Form Order Baru</p>
+    <div class="form-grid">
+      <div class="field"><label>Nama Pemesan / Tim</label><input type="text" id="f-nama" placeholder="cth: Tim Futsal SMAN 1"></div>
+      <div class="field"><label>No. WhatsApp</label><input type="text" id="f-wa" placeholder="cth: 08123456789"></div>
+      <div class="field"><label>Jumlah (pcs)</label><input type="number" id="f-qty" placeholder="cth: 16" min="1"></div>
+      <div class="field"><label>Deadline</label><input type="date" id="f-deadline"></div>
+      <div class="field"><label>Jenis Jersey</label><select id="f-jenis"><option>Futsal</option><option>Bola</option><option>Basket</option><option>Voli</option><option>Badminton</option><option>Lainnya</option></select></div>
+      <div class="field"><label>Total Harga</label><input type="text" id="f-harga" placeholder="cth: 2.400.000"></div>
+    </div>
+    <div class="form-grid full">
+      <div class="field"><label>Catatan Desain</label><textarea id="f-catatan" placeholder="Warna, nama di punggung, nomor, logo, dll..."></textarea></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="resetForm()">Reset</button>
+      <button class="btn btn-primary" onclick="submitOrder()"><i class="ti ti-check" style="font-size:13px;margin-right:4px"></i>Simpan Order</button>
+    </div>
+    <div id="form-msg" style="margin-top:10px;font-size:12px;display:none"></div>
+  </div>
+</div>
+
+<!-- SETUP INTEGRASI -->
+<div id="tab-setup" class="panel">
+  <div class="info-box">
+    <i class="ti ti-info-circle" style="font-size:16px;flex-shrink:0;margin-top:1px" aria-hidden="true"></i>
+    <div>Ikuti 3 langkah berikut untuk menghubungkan sistem ini dengan Google Sheets dan notifikasi WhatsApp otomatis.</div>
+  </div>
+
+  <div class="setup-card">
+    <h3><span class="step-num">1</span> Buat Google Sheet</h3>
+    <p style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">Buat spreadsheet baru di Google Sheets. Beri nama sheet: <strong>Orders</strong>. Buat kolom header berikut di baris pertama:</p>
+    <div class="code-block">ID | Timestamp | Nama | WhatsApp | Qty | Jenis | Harga | Deadline | Status | Catatan | Updated</div>
+    <p style="font-size:12px;color:var(--color-text-secondary);margin-top:8px">Copy ID Spreadsheet dari URL: <code style="font-size:11px;background:var(--color-background-secondary);padding:1px 5px;border-radius:4px">https://docs.google.com/spreadsheets/d/<strong>[SPREADSHEET_ID]</strong>/edit</code></p>
+  </div>
+
+  <div class="setup-card">
+    <h3><span class="step-num">2</span> Pasang Google Apps Script</h3>
+    <p style="font-size:12px;color:var(--color-text-secondary);margin-bottom:8px;line-height:1.6">Di Google Sheet, buka <strong>Extensions → Apps Script</strong>, hapus kode default, paste kode berikut:</p>
+    <div class="code-block"><button class="copy-btn" onclick="copyCode('gs')">Copy</button><span id="gs">const SHEET_ID = 'GANTI_DENGAN_SPREADSHEET_ID';
+const WA_TOKEN = 'GANTI_DENGAN_FONNTE_TOKEN';
+const SHEET_NAME = 'Orders';
+
+function doGet(e) {
+  try {
+    const action = e.parameter.action;
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    const sheet = ss.getSheetByName(SHEET_NAME);
+
+    if (action === 'getOrders') {
+      const rows = sheet.getDataRange().getValues();
+      const headers = rows[0];
+      const orders = rows.slice(1).map(r => {
+        let obj = {};
+        headers.forEach((h,i) => obj[h] = r[i]);
+        return obj;
+      });
+      return ok({orders});
+    }
+
+    return ok({error: 'Unknown action'});
+  } catch(err) {
+    return ContentService.createTextOutput(
+      JSON.stringify({error: err.message})
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    const action = data.action;
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    const sheet = ss.getSheetByName(SHEET_NAME);
+
+    if (action === 'addOrder') {
+      const newId = 'JR-' + String(sheet.getLastRow()).padStart(3,'0');
+      sheet.appendRow([
+        newId,
+        new Date().toLocaleString('id-ID'),
+        data.nama, data.wa, data.qty,
+        data.jenis, data.harga, data.deadline,
+        'DP', data.catatan,
+        new Date().toLocaleString('id-ID')
+      ]);
+      sendWA(data.wa,
+        `✅ *ORDER DITERIMA*\n\nHalo ${data.nama}!\nOrder jersey ${data.jenis} Anda sudah tercatat.\n\n📋 *ID Order:* ${newId}\n👕 *Qty:* ${data.qty} pcs\n📅 *Deadline:* ${data.deadline}\n💰 *Total:* Rp ${data.harga}\n\n*Status saat ini: DP*\nKami akan update setiap ada perkembangan 🙏`
+      );
+      return ok({id: newId});
+    }
+
+    if (action === 'updateStatus') {
+      const rows = sheet.getDataRange().getValues();
+      for (let i = 1; i < rows.length; i++) {
+        if (rows[i][0] === data.id) {
+          sheet.getRange(i+1, 9).setValue(data.status);
+          sheet.getRange(i+1, 11).setValue(new Date().toLocaleString('id-ID'));
+          const wa = rows[i][3];
+          const nama = rows[i][2];
+          const msg = getStatusMsg(nama, data.id, data.status);
+          sendWA(wa, msg);
+          return ok({updated: true});
+        }
+      }
+      return ok({updated: false, msg: 'ID tidak ditemukan'});
+    }
+
+    if (action === 'deleteOrder') {
+      const rows = sheet.getDataRange().getValues();
+      for (let i = 1; i < rows.length; i++) {
+        if (rows[i][0] === data.id) {
+          sheet.deleteRow(i+1);
+          return ok({deleted: true});
+        }
+      }
+      return ok({deleted: false, msg: 'ID tidak ditemukan'});
+    }
+
+    if (action === 'getOrders') {
+      const rows = sheet.getDataRange().getValues();
+      const headers = rows[0];
+      const orders = rows.slice(1).map(r => {
+        let obj = {};
+        headers.forEach((h,i) => obj[h] = r[i]);
+        return obj;
+      });
+      return ok({orders});
+    }
+  } catch(err) {
+    return ContentService.createTextOutput(
+      JSON.stringify({error: err.message})
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function sendWA(nomor, pesan) {
+  const url = 'https://api.fonnte.com/send';
+  UrlFetchApp.fetch(url, {
+    method: 'POST',
+    headers: {'Authorization': WA_TOKEN},
+    payload: {target: nomor, message: pesan}
+  });
+}
+
+function getStatusMsg(nama, id, status) {
+  const emoji = {
+    'DP':'💰','Design':'🎨','Cetak':'🖨️',
+    'Jahit':'🧵','Packing':'📦','Selesai':'✅'
+  };
+  const info = {
+    'DP': 'Menunggu konfirmasi DP.',
+    'Design': 'Tim desainer sedang mengerjakan layout jersey Anda.',
+    'Cetak': 'Desain sudah disetujui, masuk antrian cetak.',
+    'Jahit': 'Bahan sudah dicetak, sedang proses jahit.',
+    'Packing': 'Jersey selesai dijahit, sedang dikemas.',
+    'Selesai': 'Jersey siap diambil / dikirim! Terima kasih 🙏'
+  };
+  return `${emoji[status]||'📋'} *UPDATE ORDER ${id}*\n\nHalo ${nama}!\nStatus order Anda sudah diperbarui.\n\n🔄 *Status: ${status.toUpperCase()}*\n${info[status]||''}\n\nInfo lebih lanjut hubungi kami ya! 😊`;
+}
+
+function ok(data) {
+  return ContentService.createTextOutput(
+    JSON.stringify({success:true, ...data})
+  ).setMimeType(ContentService.MimeType.JSON);
+}</span></div>
+    <p style="font-size:12px;color:var(--color-text-secondary);margin-top:10px">Setelah paste kode: <strong>Deploy → New deployment → Web app</strong> → Execute as: <em>Me</em> → Access: <em>Anyone</em> → Deploy. Copy URL yang muncul.</p>
+  </div>
+
+  <div class="setup-card">
+    <h3><span class="step-num">3</span> Daftarkan Fonnte (WA Gateway)</h3>
+    <p style="font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px">Daftar di <strong>fonnte.com</strong>, connect WhatsApp Anda, lalu copy token API. Masukkan ke variabel <code style="font-size:11px;background:var(--color-background-secondary);padding:1px 5px;border-radius:4px">WA_TOKEN</code> di Apps Script di atas.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" style="font-size:12px" onclick="openLink('https://fonnte.com')"><i class="ti ti-external-link" style="font-size:12px;margin-right:4px"></i>Buka Fonnte.com</button>
+    </div>
+  </div>
+
+  <div class="setup-card">
+    <h3><i class="ti ti-link" style="font-size:16px;color:#1D9E75" aria-hidden="true"></i> Hubungkan ke Tracker Ini</h3>
+    <div class="field" style="margin-bottom:10px"><label>Apps Script Web App URL</label><input type="text" id="api-url" placeholder="https://script.google.com/macros/s/.../exec"></div>
+    <button class="btn btn-primary" onclick="saveConfig()"><i class="ti ti-check" style="font-size:13px;margin-right:4px"></i>Simpan & Test Koneksi</button>
+    <div id="config-msg" style="margin-top:8px;font-size:12px;display:none"></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const STAGES = ['DP','Design','Cetak','Jahit','Packing','Selesai'];
+const STAGE_ICONS = ['ti-currency-dollar','ti-pencil','ti-printer','ti-needle-thread','ti-package','ti-check'];
+const BADGE_CLASS = {'DP':'b-dp','Design':'b-design','Cetak':'b-print','Jahit':'b-jahit','Packing':'b-packing','Selesai':'b-selesai'};
+const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbyNuYyfpC7NN34pUswRTRmuTE75TP1BEKAlcos2DKd9q12o5PenuHVSiqD0ogf6ofKpvw/exec';
+
+let orders = [
+  {id:'JR-001',nama:'Tim Futsal SMAN 1',wa:'081234567890',qty:16,jenis:'Futsal',harga:'3.200.000',deadline:'2025-01-20',status:'Selesai',catatan:'Merah putih, no punggung'},
+  {id:'JR-002',nama:'Persatuan RT 05',wa:'082345678901',qty:22,jenis:'Bola',harga:'4.400.000',deadline:'2025-01-25',status:'Selesai',catatan:'Biru dongker, nama + nomor'},
+  {id:'JR-003',nama:'Basket UNAIR',wa:'083456789012',qty:12,jenis:'Basket',harga:'2.760.000',deadline:'2025-02-01',status:'Selesai',catatan:'Kuning hitam'},
+  {id:'JR-004',nama:'Club Badminton Rungkut',wa:'084567890123',qty:10,jenis:'Badminton',harga:'1.950.000',deadline:'2025-02-05',status:'Selesai',catatan:'Hijau putih'},
+  {id:'JR-005',nama:'Tim Voli PKK Wonokromo',wa:'085678901234',qty:14,jenis:'Voli',harga:'2.660.000',deadline:'2025-02-10',status:'Packing',catatan:'Pink hitam, nama depan'},
+  {id:'JR-006',nama:'SSB Muda Pratama',wa:'086789012345',qty:20,jenis:'Bola',harga:'4.000.000',deadline:'2025-02-12',status:'Jahit',catatan:'Oranye hitam, logo club'},
+  {id:'JR-007',nama:'Tim Futsal Polda Jatim',wa:'087890123456',qty:18,jenis:'Futsal',harga:'3.600.000',deadline:'2025-02-15',status:'Cetak',catatan:'Coklat krem, nama punggung'},
+  {id:'JR-008',nama:'SMPN 3 Surabaya',wa:'088901234567',qty:24,jenis:'Bola',harga:'4.800.000',deadline:'2025-02-18',status:'Design',catatan:'Biru tua putih, no dada + punggung'},
+  {id:'JR-009',nama:'Komunitas Lari Merr',wa:'089012345678',qty:30,jenis:'Lainnya',harga:'4.500.000',deadline:'2025-02-20',status:'Design',catatan:'Hitam kuning, nama belakang saja'},
+  {id:'JR-010',nama:'Arisan Ibu-Ibu Bratang',wa:'081123456789',qty:15,jenis:'Voli',harga:'2.850.000',deadline:'2025-01-30',status:'DP',catatan:'Ungu putih'},
+  {id:'JR-011',nama:'Persik Kediri Academy',wa:'082234567890',qty:28,jenis:'Bola',harga:'5.600.000',deadline:'2025-02-22',status:'DP',catatan:'Ungu, logo persik'},
+  {id:'JR-012',nama:'Tim Futsal Kantor BRI',wa:'083345678901',qty:20,jenis:'Futsal',harga:'4.000.000',deadline:'2025-01-28',status:'DP',catatan:'Biru putih, nama + nomor punggung'},
+];
+
+let apiUrl = localStorage ? (localStorage.getItem('jersey_api_url')||DEFAULT_API_URL) : DEFAULT_API_URL;
+
+function showTab(t) {
+  document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(el=>el.classList.remove('active'));
+  const tabs = ['dashboard','orders','tambah','setup'];
+  document.querySelectorAll('.tab')[tabs.indexOf(t)].classList.add('active');
+  document.getElementById('tab-'+t).classList.add('active');
+  if(t==='dashboard') renderDashboard();
+  if(t==='orders') renderOrders();
+  if(t==='setup') document.getElementById('api-url').value = apiUrl || DEFAULT_API_URL;
+}
+
+function normalizeApiOrder(order) {
+  if (!order) return null;
+  const id = order.ID || order.id || order.Id || order['ID Order'] || order['Order ID'] || order['id order'] || '';
+  const nama = order.Nama || order.nama || order.Name || order['Nama Tim'] || order['name'] || '';
+  const waRaw = order.WhatsApp || order.wa || order.WA || order['No WA'] || order['Whatsapp'] || order['no wa'] || '';
+  const wa = String(waRaw).replace(/\D/g, '');
+  const qty = Number(order.Qty || order.qty || order.Quantity || order['Jumlah'] || 0) || 0;
+  const jenis = order.Jenis || order.jenis || order.Type || order['Jenis'] || '';
+  const harga = order.Harga || order.harga || order.Price || order['Harga'] || '';
+  const deadline = order.Deadline || order.deadline || order.Due || order['Due Date'] || order['deadline'] || '';
+  const status = order.Status || order.status || 'DP';
+  const catatan = order.Catatan || order.catatan || order.Notes || order['Catatan'] || '';
+  return { id, nama, wa, qty, jenis, harga, deadline, status, catatan };
+}
+
+async function loadLiveOrders() {
+  if (!apiUrl) apiUrl = DEFAULT_API_URL;
+  try {
+    const response = await fetch(`${apiUrl}?action=getOrders`, { cache: 'no-store' });
+    const json = await response.json();
+    if (json?.orders && Array.isArray(json.orders)) {
+      const loaded = json.orders.map(normalizeApiOrder).filter(Boolean);
+      if (loaded.length) {
+        orders = loaded;
+        renderDashboard();
+        if (document.getElementById('tab-orders')?.classList.contains('active')) renderOrders();
+        return true;
+      }
+    }
+  } catch (err) {
+    console.warn('Live order load failed:', err);
+  }
+  return false;
+}
+
+function badgeHtml(status) {
+  const cls = BADGE_CLASS[status]||'b-dp';
+  const idx = STAGES.indexOf(status);
+  const icon = idx>=0 ? STAGE_ICONS[idx] : 'ti-circle';
+  return `<span class="badge ${cls}"><i class="ti ${icon}" aria-hidden="true" style="font-size:10px"></i>${status}</span>`;
+}
+
+function renderDashboard() {
+  const counts = {};
+  STAGES.forEach(s=>counts[s]=0);
+  orders.forEach(o=>{ if(counts[o.status]!==undefined) counts[o.status]++; });
+  document.getElementById('s-total').textContent = orders.length;
+  document.getElementById('s-selesai').textContent = counts['Selesai'];
+  document.getElementById('s-proses').textContent = orders.length - counts['Selesai'];
+  const now = new Date(); let late=0;
+  orders.forEach(o=>{ if(o.status!=='Selesai' && new Date(o.deadline)<now) late++; });
+  document.getElementById('s-overdue').textContent = late;
+  STAGES.forEach((s,i)=>{ const el=document.getElementById('p'+i); if(el) el.textContent=counts[s]||0; });
+  const tbody = document.getElementById('recent-orders');
+  tbody.innerHTML = orders.slice(-5).reverse().map(o=>`
+    <tr>
+      <td style="font-family:var(--font-mono);font-size:12px">${o.id}</td>
+      <td>${o.nama}</td>
+      <td>${o.qty}</td>
+      <td>${badgeHtml(o.status)}</td>
+      <td style="font-size:12px;color:var(--color-text-secondary)">${o.deadline}</td>
+    </tr>`).join('');
+}
+
+function renderOrders() {
+  const filter = document.getElementById('filter-status')?.value||'';
+  const filtered = filter ? orders.filter(o=>o.status===filter) : orders;
+  const tbody = document.getElementById('all-orders');
+  tbody.innerHTML = filtered.map(o=>`
+    <tr>
+      <td style="font-family:var(--font-mono);font-size:11px">${o.id}</td>
+      <td><div style="font-size:13px">${o.nama}</div><div style="font-size:11px;color:var(--color-text-secondary)">${o.wa}</div></td>
+      <td>${o.qty}</td>
+      <td>${badgeHtml(o.status)}</td>
+      <td style="font-size:12px;color:var(--color-text-secondary)">${o.deadline}</td>
+      <td style="display:flex;gap:6px;align-items:center">
+        <select onchange="updateStatus('${o.id}',this.value)" style="font-size:11px;padding:4px 6px;border:0.5px solid var(--border-secondary);border-radius:var(--radius-md);background:var(--surface);color:var(--text-primary)">
+          ${STAGES.map(s=>`<option${s===o.status?' selected':''}>${s}</option>`).join('')}
+        </select>
+        <button onclick="deleteOrder('${o.id}')" title="Hapus order" style="font-size:11px;padding:4px 8px;border:0.5px solid #A32D2D;border-radius:var(--radius-md);background:#FBEAEA;color:#A32D2D;cursor:pointer;flex-shrink:0;font-weight:500">Hapus</button>
+      </td>
+    </tr>`).join('');
+}
+
+async async function deleteOrder(id) {
+  const o = orders.find(x=>x.id===id);
+  if(!o) return;
+  if(!confirm(`Hapus order ${id} (${o.nama})? Tindakan ini tidak bisa dibatalkan.`)) return;
+  orders = orders.filter(x=>x.id!==id);
+  renderOrders();
+  renderDashboard();
+  if(apiUrl) {
+    try {
+      await fetch(apiUrl, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'deleteOrder',id})});
+    } catch (err) {
+      console.warn('Delete API failed:', err);
+    }
+  }
+}
+
+function updateStatus(id, newStatus) {
+  const o = orders.find(x=>x.id===id);
+  if(!o) return;
+  o.status = newStatus;
+  renderDashboard();
+  if(apiUrl) {
+    fetch(apiUrl, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'updateStatus',id,status:newStatus})})
+      .catch(err=>{ console.warn('Update status API failed:', err); });
+  }
+}
+
+function submitOrder() {
+  const nama = document.getElementById('f-nama').value.trim();
+  const wa = document.getElementById('f-wa').value.trim();
+  const qty = document.getElementById('f-qty').value;
+  const deadline = document.getElementById('f-deadline').value;
+  const jenis = document.getElementById('f-jenis').value;
+  const harga = document.getElementById('f-harga').value.trim();
+  const catatan = document.getElementById('f-catatan').value.trim();
+  const msg = document.getElementById('form-msg');
+
+  if(!nama||!wa||!qty||!deadline) {
+    msg.style.display='block';msg.style.color='#A32D2D';
+    msg.textContent='⚠️ Nama, WA, qty, dan deadline wajib diisi.';
+    return;
+  }
+  const newId = 'JR-' + String(orders.length+1).padStart(3,'0');
+  orders.push({id:newId,nama,wa,qty:parseInt(qty),jenis,harga,deadline,status:'DP',catatan});
+  msg.style.display='block';msg.style.color='#0F6E56';
+  msg.textContent=`✅ Order ${newId} berhasil ditambahkan!`;
+  if(apiUrl) {
+    fetch(apiUrl, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'addOrder',nama,wa,qty,jenis,harga,deadline,catatan})})
+      .catch(err=>{ console.warn('Add order API failed:', err); });
+  }
+  setTimeout(()=>{ resetForm(); showTab('orders'); },1500);
+}
+
+function resetForm() {
+  ['f-nama','f-wa','f-qty','f-deadline','f-harga','f-catatan'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value='';
+  });
+  const msg=document.getElementById('form-msg');
+  if(msg) msg.style.display='none';
+}
+
+function saveConfig() {
+  const url = document.getElementById('api-url').value.trim();
+  const msg = document.getElementById('config-msg');
+  if(!url) { msg.style.display='block';msg.style.color='#A32D2D';msg.textContent='⚠️ Masukkan URL Apps Script terlebih dahulu.'; return; }
+  apiUrl = url;
+  try { localStorage.setItem('jersey_api_url', url); } catch(e){}
+  msg.style.display='block';msg.style.color='#0F6E56';
+  msg.textContent='✅ URL tersimpan! Semua update status & order baru akan sinkron ke Google Sheets.';
+  loadLiveOrders().then(success => {
+    if (!success) {
+      msg.style.color = '#A32D2D';
+      msg.textContent = '⚠️ Koneksi gagal. Pastikan URL benar dan Apps Script sudah dideploy.';
+    }
+  });
+}
+
+function copyCode(id) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.querySelector('.copy-btn');
+    if(btn){const orig=btn.textContent;btn.textContent='Copied!';setTimeout(()=>btn.textContent=orig,1500);}
+  }).catch(()=>{});
+}
+
+loadLiveOrders().then(() => renderDashboard());
+</script>

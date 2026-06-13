@@ -1,0 +1,5 @@
+Contact: https://wa.me/6281525784723
+Encryption: https://example.com/pgp-key.txt
+Acknowledgements: https://example.com/security/acknowledgements
+Preferred-Languages: en, id
+Expires: 2027-06-14T00:00:00Z

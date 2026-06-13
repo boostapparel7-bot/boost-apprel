@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOOST APPAREL — Jersey Basket Premium Indonesia</title>
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Security meta tags: CSP relaxed to allow existing inline scripts/styles, Google Fonts and GA4 -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data:; img-src 'self' data: https:; connect-src 'self' https://script.google.com https://*.googleapis.com https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDH1T23RWC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-RDH1T23RWC');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #080C12;
+      --navy:       #091526;
+      --blue-deep:  #0A2140;
+      --blue-mid:   #1256A8;
+      --blue-glow:  #1E80FF;
+      --blue-light: #5AABFF;
+      --white:      #F0F4FF;
+      --gray:       #8A9BB8;
+      --border:     rgba(30, 128, 255, 0.18);
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      background: rgba(8, 12, 18, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+    .logo span { color: var(--blue-glow); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--blue-glow);
+      color: var(--black) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--blue-light) !important; color: var(--black) !important; }
+
+    .nav-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 0;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--white);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem 5%;
+      background: rgba(14, 24, 42, 0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--white);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(30,128,255,0.22);
+      border-radius: 999px;
+      background: rgba(30,128,255,0.08);
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+    .trust-item::before {
+      content: '✔';
+      display: inline-flex;
+      width: 1.2rem;
+      height: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(30,128,255,0.18);
+      color: var(--blue-light);
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 840px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(8, 12, 18, 0.98);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem 1rem 1.5rem;
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: max-height 0.3s ease, visibility 0.3s ease;
+        pointer-events: none;
+      }
+      .nav-links.open {
+        max-height: 320px;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .nav-links li { width: 100%; text-align: center; }
+      .nav-links a {
+        width: 100%;
+        display: inline-block;
+        padding: 0.75rem 0;
+      }
+      .nav-links a.nav-cta {
+        width: auto;
+        padding: 0.6rem 1.4rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
+      .trust-strip { padding: 0.9rem 1.25rem; gap: 0.65rem; }
+      .trust-item { width: 100%; justify-content: center; }
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      #hero {
+        padding: 80px 5% 50px;
+        min-height: auto;
+      }
+    }
+    @media (max-width: 640px) {
+      #hero {
+        padding: 70px 1.25rem 40px;
+      }
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 40%, rgba(18, 86, 168, 0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 70%, rgba(30, 128, 255, 0.15) 0%, transparent 60%),
+        var(--black);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 40px,
+        rgba(30, 128, 255, 0.025) 40px,
+        rgba(30, 128, 255, 0.025) 42px
+      );
+    }
+    /* Bola basket dekoratif di background */
+    .hero-ball {
+      position: absolute; z-index: 0;
+      width: clamp(260px, 45vw, 520px);
+      height: clamp(260px, 45vw, 520px);
+      right: -80px; bottom: -60px;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      position: relative; z-index: 1;
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue-glow);
+      border: 1px solid var(--border);
+      padding: 0.3rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .hero-eyebrow {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.8rem;
+        margin-bottom: 1rem;
+      }
+    }
+    .hero-title {
+      position: relative; z-index: 1;
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+    .hero-title .line2 {
+      -webkit-text-stroke: 1.5px var(--blue-glow);
+      color: transparent;
+    }
+    .hero-sub {
+      position: relative; z-index: 1;
+      max-width: 520px;
+      color: var(--gray);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 640px) {
+      .hero-sub {
+        font-size: 0.95rem;
+        margin-bottom: 1.75rem;
+      }
+    }
+    .hero-actions {
+      position: relative; z-index: 1;
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    }
+    @media (max-width: 640px) {
+      .hero-actions {
+        gap: 0.75rem;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1.25rem;
+      }
+      .hero-actions a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .btn-primary {
+      background: var(--blue-glow);
+      color: var(--black);
+      border: none;
+      padding: 0.9rem 2.2rem;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .tracker-section {
+      padding: 2rem 5%;
+    }
+    .tracker-card {
+      width: min(100%, 980px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 20px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+      box-shadow: none;
+    }
+    .tracker-header {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .tracker-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.77rem;
+      font-family: var(--font-display);
+      color: rgba(30, 128, 255, 0.9);
+      margin-bottom: 0.85rem;
+    }
+    .tracker-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.03;
+      color: #F8FBFF;
+      margin-bottom: 0.6rem;
+    }
+    .tracker-sub {
+      color: rgba(248, 251, 255, 0.78);
+      max-width: 520px;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    .tracker-badge {
+      align-self: center;
+      color: rgba(248, 251, 255, 0.9);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: right;
+    }
+    .tracker-badge a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .tracker-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .tracker-feature {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+      color: rgba(248,251,255,0.92);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .tracker-feature::before {
+      content: '✔';
+      color: #1E80FF;
+      font-weight: 800;
+    }
+    .tracker-row {
+      display: flex; gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .tracker-input {
+      flex: 1;
+      min-width: 220px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      color: #F8FBFF;
+      padding: 0.95rem 1rem;
+      font-size: 0.96rem;
+      outline: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .tracker-input:focus {
+      border-color: rgba(30, 128, 255, 0.7);
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.12);
+    }
+    .tracker-btn {
+      border: none;
+      border-radius: 16px;
+      padding: 0 1.2rem;
+      min-width: 132px;
+      background: linear-gradient(135deg, #1E80FF 0%, #1256A8 100%);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .tracker-btn:hover { transform: translateY(-1px); box-shadow: 0 16px 32px rgba(30, 128, 255, 0.25); }
+    .tracker-btn:active { transform: translateY(0); }
+    .tracker-btn-spinner {
+      display: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.28);
+      border-top-color: #fff;
+      animation: trackSpin 0.9s linear infinite;
+    }
+    .tracker-btn.loading .tracker-symbol { display: none; }
+    .tracker-btn.loading .tracker-btn-spinner { display: inline-block; }
+    @keyframes trackSpin { to { transform: rotate(1turn); } }
+    .tracker-hint {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      color: rgba(248, 251, 255, 0.7);
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+    .tracker-hint span { display: flex; align-items: center; gap: 0.45rem; }
+    .tracker-hint span::before { content: '•'; color: rgba(30, 128, 255, 0.9); }
+    .tracker-result {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 1.35rem;
+      color: #F8FBFF;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .tracker-progress {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+    .tracker-progress-track {
+      width: 100%;
+      height: 12px;
+      background: rgba(255,255,255,0.14);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .tracker-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1E80FF 0%, #5AABFF 100%);
+      width: 0;
+      transition: width 0.45s ease;
+    }
+    .tracker-progress-steps {
+      display: flex;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      color: rgba(248,251,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+    .tracker-progress-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.32rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      flex: 0 0 auto;
+      min-width: 44px;
+      text-align: center;
+    }
+    .wa-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #25d366;
+      color: #fff;
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 6px;
+    }
+    .tracker-progress-step.active {
+      background: rgba(30,128,255,0.2);
+      color: #fff;
+      font-weight: 700;
+    }
+    .tracker-empty {
+      text-align: center;
+      color: rgba(248, 251, 255, 0.75);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+    /* Mobile tweaks specifically for tracker */
+    @media (max-width: 480px) {
+      .tracker-row { flex-direction: column; gap: 12px; }
+      .tracker-input {
+        font-size: 16px;
+        padding: 12px 14px;
+        min-width: 0;
+      }
+      .tracker-btn {
+        width: 100%;
+        padding: 12px 18px;
+        min-width: 0;
+        font-size: 16px;
+        border-radius: 14px;
+        box-shadow: 0 18px 36px rgba(30,128,255,0.12);
+      }
+      .tracker-btn .tracker-symbol { font-size: 16px; }
+      .tracker-result { padding: 1rem; }
+      .tracker-progress-track { height: 10px; }
+      .tracker-progress-steps { grid-template-columns: repeat(6, minmax(0, 1fr)); font-size: 0.72rem; gap: 0.3rem; }
+      .tracker-progress-step { padding: 0.45rem 0.25rem; font-size: 11px; }
+      .tracker-card { margin: 0 12px; padding: 1rem; }
+    }
+    @media (max-width: 640px) {
+      .btn-primary {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Additional safety for any inline grids inside tracker result */
+    .tracker-result [style*="grid-template-columns"] {
+      box-sizing: border-box;
+      max-width: 100%;
+      overflow: hidden;
+      word-break: break-word;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(240,244,255,0.3);
+      padding: 0.9rem 2.2rem;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--blue-glow); color: var(--blue-glow); }
+    @media (max-width: 640px) {
+      .btn-outline {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: var(--blue-deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: center; align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      flex: 1 1 180px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    @media (max-width: 768px) {
+      .stat-item {
+        flex: 1 1 140px;
+        padding: 1.5rem 1.25rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .stat-item {
+        flex: 1 1 100%;
+        padding: 1.25rem 1rem;
+      }
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--blue-glow);
+      line-height: 1;
+    }
+    @media (max-width: 768px) {
+      .stat-num {
+        font-size: 2.2rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .stat-num {
+        font-size: 1.8rem;
+      }
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 90px 5%; }
+    @media (max-width: 768px) {
+      section { padding: 70px 5%; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 50px 1.25rem; }
+    }
+    .section-tag {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue-glow);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--gray);
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    /* ─── PRODUCTS ─── */
+    #products { background: var(--navy); }
+    .product-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+    .product-card {
+      background: var(--blue-deep);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+    .product-card:hover { transform: translateY(-6px); border-color: var(--blue-glow); }
+    .product-img {
+      width: 100%; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #091526 0%, #0A2140 50%, #1E80FF 100%);
+    }
+    .product-img img {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .p-club   { background: linear-gradient(135deg, #0A2140 0%, #1256A8 100%); }
+    .p-nation { background: linear-gradient(135deg, #091526 0%, #0A2140 50%, #1E80FF 100%); }
+    .p-custom { background: linear-gradient(135deg, #1256A8 0%, #5AABFF 100%); }
+    .p-retro  { background: linear-gradient(135deg, #080C12 0%, #1256A8 80%); }
+
+    .jersey-svg {
+      width: 110px; height: 130px;
+      filter: drop-shadow(0 0 18px rgba(30,128,255,0.5));
+    }
+    .product-info { padding: 1.25rem; }
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .product-type {
+      font-size: 0.78rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0.2rem 0 0.8rem;
+    }
+    .product-footer {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--blue-glow);
+    }
+    .product-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(30,128,255,0.15);
+      color: var(--blue-light);
+      border: 1px solid rgba(30,128,255,0.3);
+      padding: 0.25rem 0.6rem;
+      border-radius: 3px;
+    }
+
+    /* ─── WHY US ─── */
+    #why { background: var(--black); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+    }
+    .why-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem 1.5rem;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--blue-glow));
+    }
+    .why-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .why-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+    .why-text { color: var(--gray); font-size: 0.92rem; line-height: 1.65; }
+
+    /* ─── PROCESS ─── */
+    #process { background: var(--navy); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0;
+      margin-top: 3rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+    .step {
+      padding: 2rem 1.5rem 2rem 5.5rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .step:last-child { border-right: none; }
+    @media (max-width: 768px) {
+      .step {
+        padding: 1.5rem 1.25rem 1.5rem 4.5rem;
+      }
+      .step:nth-child(odd) { border-right: none; }
+    }
+    @media (max-width: 640px) {
+      .step {
+        padding: 1.5rem 1.25rem 1.5rem 4rem;
+        border-right: none !important;
+      }
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(255,255,255,1);
+      line-height: 1;
+      position: absolute; top: 1rem; left: 1.2rem;
+      right: auto;
+      text-shadow: 0 0 10px rgba(255,255,255,0.18);
+    }
+    @media (max-width: 768px) {
+      .step-num {
+        font-size: 2.8rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .step-num {
+        font-size: 2.2rem;
+      }
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .step-text { color: var(--gray); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ─── CLIENTS ─── */
+    #clients { background: var(--black); }
+    .clients-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2rem;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .clients-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+    .client-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      border: 1px solid rgba(30,128,255,0.15);
+      border-radius: 6px;
+      background: rgba(30,128,255,0.05);
+      transition: all 0.3s ease;
+      height: 100px;
+    }
+    .client-logo:hover {
+      border-color: rgba(30,128,255,0.35);
+      background: rgba(30,128,255,0.1);
+    }
+    .client-logo img {
+      max-width: 90%;
+      max-height: 80%;
+      display: block;
+      object-fit: contain;
+    }
+
+    #testimonials { background: var(--black); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+      .testi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .testi-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+    }
+    @media (max-width: 640px) {
+      section:last-of-type .testi-card {
+        grid-column: 1;
+      }
+    }
+    .testi-card {
+      background: var(--blue-deep);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.75rem;
+    }
+    .testi-stars { color: var(--blue-glow); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .testi-quote { color: var(--white); line-height: 1.7; margin-bottom: 1.25rem; font-size: 0.95rem; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-glow));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: var(--white);
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 600; font-size: 0.9rem; }
+    .testi-club { font-size: 0.78rem; color: var(--gray); }
+
+    /* ─── CTA BANNER ─── */
+    #cta {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--navy) 60%, var(--black) 100%);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 100px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: 'BASKET';
+      position: absolute;
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 20vw, 14rem);
+      font-weight: 900;
+      color: rgba(30,128,255,0.04);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .cta-sub {
+      color: var(--gray);
+      max-width: 440px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+      position: relative;
+    }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      padding: 3rem 5%;
+      display: flex;
+      justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; }
+    .footer-logo span { color: var(--blue-glow); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a {
+      text-decoration: none; color: var(--gray); font-size: 0.85rem; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .logo img {
+  height: 90px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  mix-blend-mode: screen;
+}
+.footer-logo img {
+  height: 60px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+  mix-blend-mode: screen;
+}
+    .footer-copy { color: var(--gray); font-size: 0.8rem; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .step { border-bottom: 1px solid var(--border); }
+    }
+
+    /* ─── PRODUCT IMAGE CAROUSEL ─── */
+    .product-carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .carousel-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-slide.active {
+      opacity: 1;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .carousel-nav {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .carousel-dot.active {
+      background: var(--blue-glow);
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(30,128,255,0.2);
+      color: var(--white);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+    .carousel-arrow:hover {
+      background: rgba(30,128,255,0.4);
+    }
+    .carousel-arrow.prev {
+      left: 8px;
+    }
+    .carousel-arrow.next {
+      right: 8px;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── FLOATING CTA ─── */
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-glow));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.8rem;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(30, 128, 255, 0.35);
+      transition: all 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .floating-cta:hover {
+      transform: scale(1.15) rotate(-8deg);
+      box-shadow: 0 12px 36px rgba(30, 128, 255, 0.5);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @media (max-width: 640px) {
+      .floating-cta {
+        width: 64px;
+        height: 64px;
+        bottom: 24px;
+        right: 24px;
+        font-size: 1.6rem;
+      }
+    }
+
+    /* ─── ENHANCED BUTTON STYLES ─── */
+    .btn-primary {
+      box-shadow: 0 4px 16px rgba(30, 128, 255, 0.25);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 8px 28px rgba(30, 128, 255, 0.45);
+    }
+    .btn-outline {
+      box-shadow: 0 4px 16px rgba(240, 244, 255, 0.1);
+    }
+    .btn-outline:hover {
+      box-shadow: 0 8px 28px rgba(30, 128, 255, 0.3);
+    }
+
+    /* ─── ENHANCED CARD HOVER ─── */
+    .product-card {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .product-card:hover {
+      box-shadow: 0 12px 40px rgba(30, 128, 255, 0.25);
+    }
+    .why-card {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    .why-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 36px rgba(30, 128, 255, 0.2);
+    }
+    .testi-card {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .testi-card:hover {
+      border-color: var(--blue-glow);
+      box-shadow: 0 12px 36px rgba(30, 128, 255, 0.2);
+    }
+    .client-logo {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .client-logo:hover {
+      box-shadow: 0 8px 24px rgba(30, 128, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    /* ─── ENHANCED CTA SECTION ─── */
+    #cta {
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    #cta .btn-primary {
+      padding: 1.1rem 2.8rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="/logo.svg" alt="Boost Apparel" />
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#products">Produk</a></li>
+    <li><a href="#tracker">Lacak</a></li>
+    <li><a href="#why">Keunggulan</a></li>
+    <li><a href="#process">Proses</a></li>
+    <li><a href="#testimonials">Testimoni</a></li>
+    <li><a href="#cta" class="nav-cta">Pesan Sekarang</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <!-- Bola basket dekoratif -->
+  <svg class="hero-ball" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="98" stroke="white" stroke-width="3"/>
+    <path d="M100 2 Q130 50 130 100 Q130 150 100 198" stroke="white" stroke-width="3" fill="none"/>
+    <path d="M100 2 Q70 50 70 100 Q70 150 100 198" stroke="white" stroke-width="3" fill="none"/>
+    <line x1="2" y1="100" x2="198" y2="100" stroke="white" stroke-width="3"/>
+    <path d="M15 55 Q100 80 185 55" stroke="white" stroke-width="3" fill="none"/>
+    <path d="M15 145 Q100 120 185 145" stroke="white" stroke-width="3" fill="none"/>
+  </svg>
+  <div class="hero-eyebrow">Jersey Basket Premium · Custom &amp; Ready Stock</div>
+  <h1 class="hero-title">
+    BOOST<br>
+    <span class="line2">YOUR</span><br>
+    GAME
+  </h1>
+  <p class="hero-sub">Jersey basket sublimasi berkualitas tinggi untuk tim kalian. Free desain, bahan premium, pengiriman ke seluruh Indonesia.</p>
+  <div class="hero-actions">
+    <a href="#products" class="btn-primary">Lihat Koleksi</a>
+    <a href="https://wa.me/6281525784723" target="_blank" class="btn-outline">Konsultasi via WA</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">FIBA</div>
+    <div class="stat-label">Standar Detail setiap ukuran logo dll</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">10-14</div>
+    <div class="stat-label">Hari Estimasi Produksi</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Bahan Full Sublim</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">6 Pcs</div>
+    <div class="stat-label">Minimum Order</div>
+  </div>
+</div>
+
+<div class="trust-strip">
+  <div class="trust-item">Free ongkir 20+ pcs</div>
+  <div class="trust-item">Garansi warna tajam</div>
+  <div class="trust-item">CS online 08.00–22.00 WIB</div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="product-header">
+    <div>
+      <div class="section-tag">Koleksi Unggulan</div>
+      <h2 class="section-title">Pilihan Jersey Basket Boost Apparel</h2>
+    </div>
+    <a href="#cta" class="btn-outline">Lihat Sesmua →</a>
+  </div>
+  <div class="product-grid">
+
+    <!-- Card 1: BASKET REGULER -->
+    <div class="product-card reveal">
+      <div class="product-img p-club">
+        <svg class="jersey-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Singlet basket (tank top) -->
+          <path d="M35 10 L15 28 L25 34 L25 105 L75 105 L75 34 L85 28 L65 10 L58 16 Q50 20 42 16 Z" fill="rgba(255,255,255,0.13)" stroke="rgba(90,171,255,0.7)" stroke-width="1.5"/>
+          <!-- Nomor punggung -->
+          <text x="50" y="68" text-anchor="middle" font-size="22" font-weight="bold" fill="rgba(90,171,255,0.6)" font-family="sans-serif">23</text>
+          <!-- Garis samping -->
+          <line x1="25" y1="42" x2="25" y2="105" stroke="rgba(30,128,255,0.35)" stroke-width="4"/>
+          <line x1="75" y1="42" x2="75" y2="105" stroke="rgba(30,128,255,0.35)" stroke-width="4"/>
+        </svg>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Basket Reguler</div>
+        <div class="product-type">Basket Reguler</div>
+        <div class="product-footer">
+          <div class="product-price">Rp 135.000</div>
+          <div class="product-badge">Best Seller</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: NBA CUT -->
+    <div class="product-card reveal">
+      <div class="product-img p-nation">
+        <div class="product-carousel" data-carousel="nbacut">
+          <div class="carousel-slide active">
+            <img src="nbacut1.svg" alt="NBA CUT Jersey - View 1" />
+          </div>
+          <div class="carousel-slide">
+            <img src="nbacut2.svg" alt="NBA CUT Jersey - View 2" />
+          </div>
+          <button class="carousel-arrow prev" data-carousel="nbacut" data-direction="prev">‹</button>
+          <button class="carousel-arrow next" data-carousel="nbacut" data-direction="next">›</button>
+          <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="nbacut" data-index="0"></div>
+            <div class="carousel-dot" data-carousel="nbacut" data-index="1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">NBA CUT</div>
+        <div class="product-type">Variasi Cuttingan Bahu</div>
+        <div class="product-footer">
+          <div class="product-price">Rp 145.000</div>
+          <div class="product-badge">Premium & Best Seller</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Shooting Shirt -->
+    <div class="product-card reveal">
+      <div class="product-img p-custom">
+        <svg class="jersey-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M35 10 L15 28 L25 34 L25 105 L75 105 L75 34 L85 28 L65 10 L58 16 Q50 20 42 16 Z" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+          <text x="50" y="58" text-anchor="middle" font-size="10" font-weight="bold" fill="rgba(255,255,255,0.8)" font-family="sans-serif">YOUR</text>
+          <text x="50" y="74" text-anchor="middle" font-size="10" font-weight="bold" fill="rgba(255,255,255,0.8)" font-family="sans-serif">DESIGN</text>
+        </svg>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Shooting Shirt</div>
+        <div class="product-type">Warmup</div>
+        <div class="product-footer">
+          <div class="product-price">Rp 115.000</div>
+          <div class="product-badge"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div style="text-align:center; margin-bottom:0;">
+    <div class="section-tag">Kenapa Kami?</div>
+    <h2 class="section-title">Standar FIBA,<br>Harga Terjangkau</h2>
+    <p class="section-desc" style="margin: 0 auto;">Kami percaya setiap tim basket berhak tampil profesional di lapangan, tanpa harus keluar budget besar.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">⚡</div>
+      <div class="why-title">Produksi Cepat</div>
+      <p class="why-text">Estimasi 10-14 hari kerja setelah desain disetujui.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🎨</div>
+      <div class="why-title">Free Design</div>
+      <p class="why-text">Kirim desain sendiri atau minta bantuan tim desainer kami. Revisi tanpa batas sampai puas.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🧵</div>
+      <div class="why-title">Bahan Premium</div>
+      <p class="why-text">Kain polyester premium dan nyaman digunakan.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">📦</div>
+      <div class="why-title">Kirim Seluruh Indonesia</div>
+      <p class="why-text">Pengiriman ke seluruh Indonesia dengan packaging aman. Free ongkir untuk pemesanan di atas 20 pcs.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">💬</div>
+      <div class="why-title">CS Responsif</div>
+      <p class="why-text">Tim kami siap melayani via WhatsApp setiap hari pukul 08.00–22.00 WIB.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">✅</div>
+      <div class="why-title">Warna Tajam</div>
+      <p class="why-text">Warna tajam dan tidak mudah luntur dengan teknik sublimasi full-press. Kualitas terjamin tiap lembar jersey.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-tag">Cara Pesan</div>
+  <h2 class="section-title">Proses Mudah,<br>Hasil Maksimal</h2>
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <div class="step-title">Konsultasi</div>
+      <p class="step-text">Hubungi kami via WhatsApp. Ceritakan kebutuhan tim basket Anda — jumlah pemain, ukuran, dan konsep desain.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <div class="step-title">Desain</div>
+      <p class="step-text">Tim desainer kami buat mockup digital jersey basket dalam 1×24 jam. Revisi gratis sampai Anda puas.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <div class="step-title">Produksi</div>
+      <p class="step-text">Setelah acc dan DP, jersey langsung masuk jalur produksi sublimasi berkualitas tinggi.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <div class="step-title">Pengiriman</div>
+      <p class="step-text">Jersey dikemas rapi dan dikirim ke alamat Anda. Tracking nomor resi diberikan real-time.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tracker" class="tracker-section">
+  <div class="tracker-card">
+    <div class="tracker-header">
+      <div>
+        <div class="tracker-eyebrow">Layanan Pelanggan</div>
+        <h2 class="tracker-title">Lacak status produksi jersey timmu dalam sekejap</h2>
+        <p class="tracker-sub">Pantau proses desain, cetak, jahit, dan packing tanpa harus menunggu. Masukkan nomor order atau WhatsApp, lalu langsung dapatkan update real-time.</p>
+      </div>
+      <div class="tracker-badge">Hubungi WA <a href="https://wa.me/6281525784723" target="_blank">+62 815-2578-4723</a></div>
+    </div>
+
+    <div class="tracker-features">
+      <div class="tracker-feature">Update status produksi cepat</div>
+      <div class="tracker-feature">Tersedia untuk order custom dan ready stock</div>
+      <div class="tracker-feature">Layanan pelanggan 08.00–22.00 WIB</div>
+      <div class="tracker-feature">Monitoring tanpa ribet</div>
+    </div>
+
+    <div class="tracker-row">
+      <input id="tracker-search-input" class="tracker-input" type="text" placeholder="Contoh: JR-007 atau 08123456789" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter') trackerCekOrder()" />
+      <button id="tracker-search-btn" class="tracker-btn" onclick="trackerCekOrder()" type="button" aria-label="Cari pesanan">
+        <span class="tracker-symbol">🔎</span>
+        <span class="tracker-btn-spinner" aria-hidden="true"></span>
+        Lacak Sekarang
+      </button>
+    </div>
+
+    <div class="tracker-hint">
+      <span>ID Order (JR-XXX)</span>
+      <span>Nomor WhatsApp</span>
+    </div>
+
+    <div id="tracker-result-area" class="tracker-result tracker-empty">
+      Masukkan data order untuk melihat status produksi.
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div style="text-align:center;">
+    <div class="section-tag">Testimoni</div>
+    <h2 class="section-title">Tim Basket yang Sudah<br>Percaya Kami</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Kualitas jahitan dan sablonannya rapi. Tim basket kita makin percaya diri turun ke lapangan. Sudah pesan 3x dan selalu puas!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RH</div>
+        <div>
+          <div class="testi-name">Coach Adi</div>
+          <div class="testi-club">Head Coach SMP 13 Makassar</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Pesan 30 jersey buat turnamen 3on3, datang tepat waktu dan sesuai desain. Pelayanan CS-nya juga super ramah dan responsif."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AF</div>
+        <div>
+          <div class="testi-name">Coach Chan</div>
+          <div class="testi-club">Head Coach SMA Negeri 9 Makassar</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Harga bersaing, bahan adem, warna tajam. Kami tim basket smaga pakai jersey custom ini dan banyak yang nanya beli di mana!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">DK</div>
+        <div>
+          <div class="testi-name">Coach Muslimin</div>
+          <div class="testi-club">Head Coach SMA Negeri 3 Makassar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Warna Tajam, jahitan rapi, cuttingan pas. Sangat puas dengan kualitas produknya!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">DK</div>
+        <div>
+          <div class="testi-name">Coach Khusnul</div>
+          <div class="testi-club">Head Coach SMA Negeri 5 Makassar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="clients-title">
+    <div class="section-tag">Dipercaya Oleh</div>
+    <h2 class="section-title">Tim Basket Indonesia</h2>
+  </div>
+  <div class="clients-grid">
+    <div class="client-logo reveal">
+      <img src="/logo-client-1.svg" alt="Tim klien 1" />
+    </div>
+    <div class="client-logo reveal">
+      <img src="/logo-client-2.svg" alt="Tim klien 2" />
+    </div>
+    <div class="client-logo reveal">
+      <img src="/logo-client-3.svg" alt="Tim klien 3" />
+    </div>
+    <div class="client-logo reveal">
+      <img src="/logo-client-4.svg" alt="Tim klien 4" />
+    </div>
+    <div class="client-logo reveal">
+      <img src="/logo-client-5.svg" alt="Tim klien 5" />
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2 class="cta-title">Siap Tampil<br>Profesional?</h2>
+  <p class="cta-sub">Hubungi kami sekarang dan dapatkan konsultasi desain jersey basket gratis. Minimum order hanya 6 pcs!</p>
+  <div class="cta-actions">
+    <a href="https://wa.me/6281525784723?text=Halo,%20saya%20mau%20pesan%20jersey%20basket%20custom" target="_blank" class="btn-primary">
+      Order via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FLOATING CTA BUTTON -->
+<a href="https://wa.me/6281525784723?text=Halo,%20saya%20mau%20pesan%20jersey%20basket%20custom" target="_blank" class="floating-cta" title="Pesan via WhatsApp">💬</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+  <img src="/logo.svg" alt="Boost Apparel" />
+</div>
+  <ul class="footer-links">
+    <li><a href="#products">Produk</a></li>
+    <li><a href="#why">Keunggulan</a></li>
+    <li><a href="#process">Cara Pesan</a></li>
+    <li><a href="#cta">Kontak</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Boost Apparel Jersey. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Carousel functionality
+  const carouselState = {};
+
+  function initCarousel(name, slides) {
+    carouselState[name] = { current: 0, total: slides };
+  }
+
+  function showSlide(name, index) {
+    const carousel = document.querySelector(`[data-carousel="${name}"]`);
+    if (!carousel) return;
+
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    carouselState[name].current = index;
+  }
+
+  function nextSlide(name) {
+    const total = carouselState[name].total;
+    const next = (carouselState[name].current + 1) % total;
+    showSlide(name, next);
+  }
+
+  function prevSlide(name) {
+    const total = carouselState[name].total;
+    const prev = (carouselState[name].current - 1 + total) % total;
+    showSlide(name, prev);
+  }
+
+  // Initialize carousels
+  document.querySelectorAll('.product-carousel').forEach(carousel => {
+    const name = carousel.dataset.carousel;
+    const slides = carousel.querySelectorAll('.carousel-slide').length;
+    initCarousel(name, slides);
+  });
+
+  // Arrow buttons
+  document.querySelectorAll('.carousel-arrow').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const name = btn.dataset.carousel;
+      const direction = btn.dataset.direction;
+      if (direction === 'next') nextSlide(name);
+      else prevSlide(name);
+    });
+  });
+
+  // Dot indicators
+  document.querySelectorAll('.carousel-dot').forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const name = dot.dataset.carousel;
+      const index = parseInt(dot.dataset.index);
+      showSlide(name, index);
+    });
+  });
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  navToggle?.addEventListener('click', () => {
+    navLinks?.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks?.classList.remove('open');
+      navToggle?.classList.remove('open');
+    });
+  });
+
+  const BOOST_WA = '6281525784723';
+  const TRACKER_API_URL = 'https://script.google.com/macros/s/AKfycbyNuYyfpC7NN34pUswRTRmuTE75TP1BEKAlcos2DKd9q12o5PenuHVSiqD0ogf6ofKpvw/exec';
+  const TRACKER_ORDERS_FALLBACK = [
+    {id:'JR-001',nama:'Tim Futsal SMAN 1',wa:'081234567890',qty:16,jenis:'Futsal',harga:'3.200.000',deadline:'2025-01-20',status:'Selesai',catatan:'Merah putih, no punggung'},
+    {id:'JR-002',nama:'Persatuan RT 05',wa:'082345678901',qty:22,jenis:'Bola',harga:'4.400.000',deadline:'2025-01-25',status:'Selesai',catatan:'Biru dongker, nama + nomor'},
+    {id:'JR-003',nama:'Basket UNAIR',wa:'083456789012',qty:12,jenis:'Basket',harga:'2.760.000',deadline:'2025-02-01',status:'Selesai',catatan:'Kuning hitam'},
+    {id:'JR-004',nama:'Club Badminton Rungkut',wa:'084567890123',qty:10,jenis:'Badminton',harga:'1.950.000',deadline:'2025-02-05',status:'Selesai',catatan:'Hijau putih'},
+    {id:'JR-005',nama:'Tim Voli PKK Wonokromo',wa:'085678901234',qty:14,jenis:'Voli',harga:'2.660.000',deadline:'2025-02-10',status:'Packing',catatan:'Pink hitam, nama depan'},
+    {id:'JR-006',nama:'SSB Muda Pratama',wa:'086789012345',qty:20,jenis:'Bola',harga:'4.000.000',deadline:'2025-02-12',status:'Jahit',catatan:'Oranye hitam, logo club'},
+    {id:'JR-007',nama:'Tim Futsal Polda Jatim',wa:'087890123456',qty:18,jenis:'Futsal',harga:'3.600.000',deadline:'2025-02-15',status:'Cetak',catatan:'Coklat krem, nama punggung'},
+    {id:'JR-008',nama:'SMPN 3 Surabaya',wa:'088901234567',qty:24,jenis:'Bola',harga:'4.800.000',deadline:'2025-02-18',status:'Design',catatan:'Biru tua putih, no dada + punggung'},
+    {id:'JR-009',nama:'Komunitas Lari Merr',wa:'089012345678',qty:30,jenis:'Lainnya',harga:'4.500.000',deadline:'2025-02-20',status:'Design',catatan:'Hitam kuning, nama belakang saja'},
+    {id:'JR-010',nama:'Arisan Ibu-Ibu Bratang',wa:'081123456789',qty:15,jenis:'Voli',harga:'2.850.000',deadline:'2025-01-30',status:'DP',catatan:'Ungu putih'},
+    {id:'JR-011',nama:'Persik Kediri Academy',wa:'082234567890',qty:28,jenis:'Bola',harga:'5.600.000',deadline:'2025-02-22',status:'DP',catatan:'Ungu, logo persik'},
+    {id:'JR-012',nama:'Tim Futsal Kantor BRI',wa:'083345678901',qty:20,jenis:'Futsal',harga:'4.000.000',deadline:'2025-01-28',status:'DP',catatan:'Biru putih, nama + nomor punggung'},
+  ];
+  let TRACKER_ORDERS = [...TRACKER_ORDERS_FALLBACK];
+  let trackerDataFetched = false;
+  let trackerDataError = false;
+
+  function normalizeTrackerOrder(order) {
+    if (!order) return null;
+    const id = order.ID || order.id || order.Id || order['ID Order'] || order['Order ID'] || '';
+    const nama = order.Nama || order.nama || order.Name || order['Nama Tim'] || '';
+    const waRaw = order.WhatsApp || order.wa || order.WA || order['No WA'] || order['WhatsApp'] || '';
+    const wa = String(waRaw).replace(/\D/g, '');
+    const qty = Number(order.Qty || order.qty || order.Quantity || 0) || 0;
+    const jenis = order.Jenis || order.jenis || order.Type || '';
+    const harga = order.Harga || order.harga || order.Price || '';
+    const deadline = order.Deadline || order.deadline || order.Due || '';
+    const status = order.Status || order.status || 'DP';
+    const catatan = order.Catatan || order.catatan || order.Notes || '';
+    return { id, nama, wa, qty, jenis, harga, deadline, status, catatan };
+  }
+
+  async function trackerLoadOrders() {
+    if (trackerDataFetched || trackerDataError) return;
+    try {
+      const response = await fetch(`${TRACKER_API_URL}?action=getOrders`, { cache: 'no-store' });
+      const json = await response.json();
+      if (json?.success && Array.isArray(json.orders)) {
+        const loaded = json.orders.map(normalizeTrackerOrder).filter(Boolean);
+        if (loaded.length) TRACKER_ORDERS = loaded;
+        trackerDataFetched = true;
+      } else {
+        trackerDataError = true;
+      }
+    } catch (err) {
+      trackerDataError = true;
+      console.warn('Tracker load failed:', err);
+    }
+  }
+
+  function trackerStartAnim() {
+    const btn = document.getElementById('tracker-search-btn');
+    const input = document.getElementById('tracker-search-input');
+    btn?.classList.add('loading');
+    btn?.setAttribute('disabled', '');
+    input?.setAttribute('disabled', '');
+  }
+
+  function trackerStopAnim() {
+    const btn = document.getElementById('tracker-search-btn');
+    const input = document.getElementById('tracker-search-input');
+    btn?.classList.remove('loading');
+    btn?.removeAttribute('disabled');
+    input?.removeAttribute('disabled');
+  }
+
+  function trackerShowMessage(message) {
+    const area = document.getElementById('tracker-result-area');
+    if (area) {
+      area.classList.add('tracker-empty');
+      area.innerHTML = message;
+    }
+  }
+
+  function trackerRenderResult(order) {
+    const area = document.getElementById('tracker-result-area');
+    if (!area) return;
+    area.classList.remove('tracker-empty');
+    const dl = new Date(order.deadline).toLocaleDateString('id-ID', {day:'numeric',month:'short',year:'numeric'});
+    const stages = ['DP','Design','Cetak','Jahit','Packing','Selesai'];
+    const stageIndex = Math.max(0, stages.indexOf(order.status));
+    const progressPercent = stageIndex >= 0 ? Math.round(((stageIndex + 1) / stages.length) * 100) : 0;
+    const progressSteps = stages.map((stage, idx) => `
+        <div class="tracker-progress-step${idx <= stageIndex ? ' active' : ''}">${stage}</div>`).join('');
+
+    area.innerHTML = `
+      <div style="display:grid;gap:0.65rem;">
+        <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;">
+          <strong style="font-size:1rem;color:#fff;min-width:0;">${order.id} — ${order.nama}</strong>
+          <span style="color:rgba(248,251,255,0.72);white-space:nowrap;">Status: <strong>${order.status}</strong></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:0.6rem;width:100%;">
+          <div style="background:rgba(255,255,255,0.06);padding:0.75rem;border-radius:12px;min-width:0;word-break:break-word;">Nomor WA<br><strong>${order.wa}</strong></div>
+          <div style="background:rgba(255,255,255,0.06);padding:0.75rem;border-radius:12px;min-width:0;word-break:break-word;">Deadline<br><strong>${dl}</strong></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);padding:0.75rem;border-radius:12px;min-width:0;word-break:break-word;">
+          Catatan: <span style="color:rgba(248,251,255,0.84);">${order.catatan || '—'}</span>
+        </div>
+        <div class="tracker-progress">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
+            <span style="font-size:0.9rem;font-weight:700;color:#fff;">Progress</span>
+            <span style="font-size:0.85rem;color:rgba(248,251,255,0.8);">${progressPercent}%</span>
+          </div>
+          <div class="tracker-progress-track">
+            <div class="tracker-progress-fill" style="width:${progressPercent}%"></div>
+          </div>
+          <div class="tracker-progress-steps">${progressSteps}</div>
+        </div>
+        <a href="https://wa.me/${BOOST_WA}?text=${encodeURIComponent(`Halo, saya ingin menanyakan status order ${order.id} atas nama ${order.nama}. Saat ini berstatus ${order.status}. Mohon infonya ya 🙏`)}" target="_blank" class="wa-link">Hubungi via WA</a>
+      </div>`;
+  }
+
+  async function trackerCekOrder() {
+    const query = document.getElementById('tracker-search-input')?.value.trim();
+    if (!query) {
+      trackerShowMessage('Masukkan ID order atau nomor WhatsApp dulu ya.');
+      return;
+    }
+    trackerStartAnim();
+    await trackerLoadOrders();
+
+    const clean = query.replace(/\s|-/g,'').toLowerCase();
+    const phoneQuery = query.replace(/\D/g, '');
+    const numericQuery = phoneQuery;
+    const result = TRACKER_ORDERS.find(o => {
+      const idClean = String(o.id || '').replace(/\s|-/g,'').toLowerCase();
+      const idDigits = idClean.replace(/\D/g, '');
+      const waClean = String(o.wa || '').replace(/\D/g, '');
+      return idClean === clean 
+        || String(o.id || '').toLowerCase() === query.toLowerCase() 
+        || waClean === phoneQuery 
+        || (numericQuery && idDigits === numericQuery) 
+        || (numericQuery && idDigits.endsWith(numericQuery));
+    });
+
+    if (!result) {
+      trackerShowMessage(trackerDataError ? 'Order tidak ditemukan. Coba cek kembali ID order atau nomor WA kamu.' : 'Order tidak ditemukan. Coba cek kembali ID order atau nomor WA kamu.');
+    } else {
+      trackerRenderResult(result);
+    }
+    trackerStopAnim();
+  }
+</script>
+</body>
+</html>
